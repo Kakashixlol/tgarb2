@@ -127,91 +127,109 @@
             </div>
         </div>
     </nav>
-    
+
     <!-- صفحة الترحيب -->
-    <section id="welcome" class="container-fluid background-1 text-center">
-        <div class="container">
-            <h1 class="display-4">مرحباً بكم في منظمة محبي الأنمي!</h1>
-            <p>نحن هنا لمشاركة حبنا للأنمي مع الجميع.</p>
+    <section id="welcome" class="background-1 text-center">
+        <div class="container section-content">
+            <h1 class="display-4 mb-4 fade-in">مرحباً بكم في منظمة محبي الأنمي!</h1>
+            <p class="lead fade-in">نحن هنا لمشاركة حبنا للأنمي مع الجميع.</p>
+            <a href="#rules" class="btn btn-custom btn-lg mt-3 fade-in">تعرف على المزيد</a>
         </div>
     </section>
 
     <!-- صفحة القوانين والمميزات -->
-    <section id="rules" class="container-fluid background-2 text-center">
-        <div class="container">
-            <h2>القوانين والمميزات</h2>
-            <ul class="list-numbered">
-                <li>احترام الجميع والتعاون.</li>
-                <li>المشاركة في الأنشطة المختلفة.</li>
-                <li>الالتزام بالقوانين وتوجيهات المشرفين.</li>
-            </ul>
+    <section id="rules" class="background-2 py-5">
+        <div class="container section-content">
+            <h2 class="text-center mb-4 fade-in">القوانين والمميزات</h2>
+            <div class="row">
+                <div class="col-md-6 fade-in">
+                    <h3><i class="fas fa-gavel me-2"></i>القوانين</h3>
+                    <ul class="list-numbered">
+                        <li>احترام الجميع والتعاون.</li>
+                        <li>الالتزام بالموضوعات المتعلقة بالأنمي.</li>
+                        <li>عدم نشر المحتوى غير اللائق.</li>
+                    </ul>
+                </div>
+                <div class="col-md-6 fade-in">
+                    <h3><i class="fas fa-gift me-2"></i>المميزات</h3>
+                    <ul class="list-numbered">
+                        <li>مناقشات أسبوعية حول أحدث الأنميات.</li>
+                        <li>مسابقات وجوائز شهرية.</li>
+                        <li>ورش عمل لتعلم الرسم بأسلوب الأنمي.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- صفحة المشرفين -->
-    <section id="admins" class="container-fluid background-3 text-center">
-        <div class="container">
-            <h2>المشرفين والمسؤولين</h2>
-            <!-- نموذج للبطاقات -->
+    <section id="admins" class="background-3 py-5">
+        <div class="container section-content">
+            <h2 class="text-center mb-4 fade-in">المشرفين والمسؤولين</h2>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 mb-4 fade-in">
                     <div class="card">
-                        <img src="https://images8.alphacoders.com/430/430276.jpg" class="card-img-top" alt="المسؤول">
+                        <img src="/api/placeholder/400/300" class="card-img-top" alt="المسؤول">
                         <div class="card-body">
                             <h5 class="card-title">اللقب: القائد</h5>
                             <p class="card-text">الرتبة: مدير</p>
                             <p class="card-text">الوظيفة: إدارة الفريق</p>
-                            <a href="https://wa.me/000000000" class="btn btn-custom">تواصل</a>
+                            <a href="#" class="btn btn-custom"><i class="fab fa-whatsapp me-2"></i>تواصل</a>
                         </div>
                     </div>
                 </div>
-                <!-- أضف المزيد من البطاقات هنا -->
+                <!-- يمكن إضافة المزيد من بطاقات المشرفين هنا -->
             </div>
         </div>
     </section>
 
     <!-- صفحة الألقاب -->
-    <section id="titles" class="container-fluid background-4 text-center">
-        <div class="container">
-            <h2>الألقاب الخاصة بالأعضاء</h2>
-            <ul id="titlesList" class="list-numbered">
-                <!-- سيتم ملء الألقاب هنا بواسطة Firebase -->
+    <section id="titles" class="background-4 py-5">
+        <div class="container section-content">
+            <h2 class="text-center mb-4 fade-in">الألقاب الخاصة بالأعضاء</h2>
+            <ul id="titlesList" class="list-numbered fade-in">
+                <!-- سيتم ملء الألقاب هنا بواسطة JavaScript -->
             </ul>
-            <button class="btn btn-custom" onclick="manageTitle('add')">إضافة لقب جديد</button>
-                <button class="btn btn-custom" onclick="manageTitle('remove')">حذف لقب</button>
+            <div class="text-center mt-4 fade-in">
+                <button class="btn btn-custom me-2" onclick="manageTitle('add')"><i class="fas fa-plus me-2"></i>إضافة لقب جديد</button>
+                <button class="btn btn-custom" onclick="manageTitle('remove')"><i class="fas fa-minus me-2"></i>حذف لقب</button>
+            </div>
         </div>
     </section>
 
     <!-- صفحة نجوم الأسبوع -->
-    <section id="stars" class="container-fluid background-5 text-center">
-        <div class="container">
-            <h2>نجوم الأسبوع</h2>
-            <ul id="starsList" class="list-numbered">
-                <!-- سيتم ملء نجوم الأسبوع هنا بواسطة Firebase -->
+    <section id="stars" class="background-5 py-5">
+        <div class="container section-content">
+            <h2 class="text-center mb-4 fade-in">نجوم الأسبوع</h2>
+            <ul id="starsList" class="list-numbered fade-in">
+                <!-- سيتم ملء نجوم الأسبوع هنا بواسطة JavaScript -->
             </ul>
-             <button class="btn btn-custom" onclick="manageStar()">تغيير نجم الأسبوع</button>
+            <div class="text-center mt-4 fade-in">
+                <button class="btn btn-custom" onclick="manageStar()"><i class="fas fa-star me-2"></i>تغيير نجم الأسبوع</button>
+            </div>
         </div>
     </section>
 
     <!-- صفحة الروابط -->
-    <section id="links" class="container-fluid background-6 text-center">
-         <!-- روابط المجموعات -->
-        <div class="card mb-4">
-            <div class="card-body">
-                <h4 class="card-title">روابط المجموعات</h4>
-                <div class="card-deck">
-                    <div class="card text-white bg-dark mb-3">
-                        <img src="group1.jpg" class="card-img-top" alt="مجموعة 1">
+    <section id="links" class="background-6 py-5">
+        <div class="container section-content">
+            <h2 class="text-center mb-4 fade-in">روابط المجموعات</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4 fade-in">
+                    <div class="card">
+                        <img src="/api/placeholder/400/200" class="card-img-top" alt="مجموعة النقاشات">
                         <div class="card-body">
                             <h5 class="card-title">مجموعة النقاشات</h5>
-                            <a href="#" class="btn btn-custom">انضم للمجموعة</a>
+                            <a href="#" class="btn btn-custom"><i class="fab fa-telegram me-2"></i>انضم للمجموعة</a>
                         </div>
                     </div>
-                    <div class="card text-white bg-dark mb-3">
-                        <img src="group2.jpg" class="card-img-top" alt="مجموعة 2">
+                </div>
+                <div class="col-md-6 mb-4 fade-in">
+                    <div class="card">
+                        <img src="/api/placeholder/400/200" class="card-img-top" alt="مجموعة التحديثات">
                         <div class="card-body">
                             <h5 class="card-title">مجموعة التحديثات</h5>
-                            <a href="#" class="btn btn-custom">انضم للمجموعة</a>
+                            <a href="#" class="btn btn-custom"><i class="fab fa-telegram me-2"></i>انضم للمجموعة</a>
                         </div>
                     </div>
                 </div>
@@ -221,8 +239,9 @@
 
     <!-- شريط الحقوق -->
     <div class="footer">
-        حقوق الموقع محفوظة &copy; 2024 <a href="https://github.com/omar" target="_blank">Omar</a>
+        حقوق الموقع محفوظة &copy; 2024 <a href="https://github.com/omar" target="_blank">ＫΞＦＯ</a>
     </div>
+
 
     <!-- ربط JavaScript و Firebase -->
     <script>
