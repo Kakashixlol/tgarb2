@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منظمة محبي الأنمي</title>
+    <!-- ربط Bootstrap عبر CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* تحسين تصميم الموقع بالكامل */
+        body {
+            background-color: #1a1a1a;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding-bottom: 60px; /* مساحة كافية لشريط الحقوق */
+        }
+        .navbar, .footer {
+            background-color: #111;
+        }
+        .card {
+            background-color: #252525;
+            border: 1px solid #333;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            background-color: #333;
+        }
+        .card-title, .footer {
+            color: #f8f9fa;
+        }
+        .footer {
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+        .background-1, .background-2, .background-3, .background-4, .background-5, .background-6 {
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            padding: 60px 0;
+        }
+        .background-1 { background-image: url('https://images8.alphacoders.com/430/430276.jpg'); }
+        .background-2 { background-image: url('https://images7.alphacoders.com/422/422664.jpg'); }
+        .background-3 { background-image: url('https://images5.alphacoders.com/396/396338.jpg'); }
+        .background-4 { background-image: url('https://images6.alphacoders.com/428/428626.jpg'); }
+        .background-5 { background-image: url('https://images6.alphacoders.com/102/1026281.jpg'); }
+        .background-6 { background-image: url('https://images8.alphacoders.com/413/413072.jpg'); }
+        .btn-custom {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+        .list-numbered li::before {
+            content: counters(item, ".") ". ";
+            counter-increment: item;
+            color: #f39c12;
+        }
+        .list-numbered {
+            counter-reset: item;
+            padding-left: 0;
+            list-style: none;
+        }
+    </style>
+    <!-- ربط Firebase عبر CDN -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">منظمة محبي الأنمي</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="#welcome">الترحيب</a></li>
+                <li class="nav-item"><a class="nav-link" href="#rules">القوانين والمميزات</a></li>
+                <li class="nav-item"><a class="nav-link" href="#admins">المشرفين</a></li>
+                <li class="nav-item"><a class="nav-link" href="#titles">الألقاب</a></li>
+                <li class="nav-item"><a class="nav-link" href="#stars">نجوم الأسبوع</a></li>
+                <li class="nav-item"><a class="nav-link" href="#links">روابط المجموعة</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- صفحة الترحيب -->
+    <section id="welcome" class="container-fluid background-1 text-center">
+        <div class="container">
+            <h1 class="display-4">مرحباً بكم في منظمة محبي الأنمي!</h1>
+            <p>نحن هنا لمشاركة حبنا للأنمي مع الجميع.</p>
+        </div>
+    </section>
+
+    <!-- صفحة القوانين والمميزات -->
+    <section id="rules" class="container-fluid background-2 text-center">
+        <div class="container">
+            <h2>القوانين والمميزات</h2>
+            <ul class="list-numbered">
+                <li>احترام الجميع والتعاون.</li>
+                <li>المشاركة في الأنشطة المختلفة.</li>
+                <li>الالتزام بالقوانين وتوجيهات المشرفين.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- صفحة المشرفين -->
+    <section id="admins" class="container-fluid background-3 text-center">
+        <div class="container">
+            <h2>المشرفين والمسؤولين</h2>
+            <!-- نموذج للبطاقات -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://images8.alphacoders.com/430/430276.jpg" class="card-img-top" alt="المسؤول">
+                        <div class="card-body">
+                            <h5 class="card-title">اللقب: القائد</h5>
+                            <p class="card-text">الرتبة: مدير</p>
+                            <p class="card-text">الوظيفة: إدارة الفريق</p>
+                            <a href="https://wa.me/000000000" class="btn btn-custom">تواصل</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- أضف المزيد من البطاقات هنا -->
+            </div>
+        </div>
+    </section>
+
+    <!-- صفحة الألقاب -->
+    <section id="titles" class="container-fluid background-4 text-center">
+        <div class="container">
+            <h2>الألقاب الخاصة بالأعضاء</h2>
+            <ul id="titlesList" class="list-numbered">
+                <!-- سيتم ملء الألقاب هنا بواسطة Firebase -->
+            </ul>
+            <button class="btn btn-custom" onclick="manageTitle('add')">إضافة لقب جديد</button>
+                <button class="btn btn-custom" onclick="manageTitle('remove')">حذف لقب</button>
+        </div>
+    </section>
+
+    <!-- صفحة نجوم الأسبوع -->
+    <section id="stars" class="container-fluid background-5 text-center">
+        <div class="container">
+            <h2>نجوم الأسبوع</h2>
+            <ul id="starsList" class="list-numbered">
+                <!-- سيتم ملء نجوم الأسبوع هنا بواسطة Firebase -->
+            </ul>
+             <button class="btn btn-custom" onclick="manageStar()">تغيير نجم الأسبوع</button>
+        </div>
+    </section>
+
+    <!-- صفحة الروابط -->
+    <section id="links" class="container-fluid background-6 text-center">
+         <!-- روابط المجموعات -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h4 class="card-title">روابط المجموعات</h4>
+                <div class="card-deck">
+                    <div class="card text-white bg-dark mb-3">
+                        <img src="group1.jpg" class="card-img-top" alt="مجموعة 1">
+                        <div class="card-body">
+                            <h5 class="card-title">مجموعة النقاشات</h5>
+                            <a href="#" class="btn btn-custom">انضم للمجموعة</a>
+                        </div>
+                    </div>
+                    <div class="card text-white bg-dark mb-3">
+                        <img src="group2.jpg" class="card-img-top" alt="مجموعة 2">
+                        <div class="card-body">
+                            <h5 class="card-title">مجموعة التحديثات</h5>
+                            <a href="#" class="btn btn-custom">انضم للمجموعة</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- شريط الحقوق -->
+    <div class="footer">
+        حقوق الموقع محفوظة &copy; 2024 <a href="https://github.com/omar" target="_blank">Omar</a>
+    </div>
+
+    <!-- ربط JavaScript و Firebase -->
+    <script>
+        // تهيئة Firebase
+       var firebaseConfig = {
+            apiKey: "AIzaSyDh4yD---YourAPIKeyHere",
+            authDomain: "forland-f4965.firebaseapp.com",
+            databaseURL: "https://forland-f4965-default-rtdb.firebaseio.com",
+            projectId: "forland-f4965",
+            storageBucket: "forland-f4965.appspot.com",
+            messagingSenderId: "376812143648",
+            appId: "1:376812143648:web:1f83efdd03e289e27897a3",
+            measurementId: "G-JM1PSBVGJX"
+        };
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+        const database = firebase.database();
+        const password = "Anime2024"; // كلمة مرور لحماية العمليات الخاصة بالألقاب والنجوم
+
+        // دالة التعامل مع الألقاب (إضافة/مسح)
+        function manageTitle(action) {
+            const enteredPassword = prompt("أدخل كلمة المرور:");
+            if (enteredPassword === password) {
+                if (action === 'add') {
+                    const title = prompt("ادخل اللقب الجديد:");
+                    if (title) {
+                        const titleRef = database.ref('titles').push();
+                        titleRef.set({ title });
+                    }
+                } else if (action === 'remove') {
+                    const titleNumber = prompt("ادخل رقم اللقب للمسح:");
+                    database.ref('titles').once('value', function(snapshot) {
+                        const titles = snapshot.val();
+                        const titleKey = Object.keys(titles)[titleNumber - 1];
+                        if (titleKey) {
+                            database.ref('titles/' + titleKey).remove();
+                        }
+                    });
+                }
+            } else {
+                alert("كلمة المرور غير صحيحة.");
+            }
+        }
+
+        // دالة التعامل مع النجوم
+        function manageStar() {
+            const enteredPassword = prompt("أدخل كلمة المرور:");
+            if (enteredPassword === password) {
+                const newStar = prompt("ادخل لقب نجم الأسبوع الجديد:");
+                if (newStar) {
+                    database.ref('stars').remove(); // إزالة النجم القديم
+                    const starRef = database.ref('stars').push();
+                    starRef.set({ star: newStar }); // إضافة النجم الجديد
+                }
+            } else {
+                alert("كلمة المرور غير صحيحة.");
+            }
+        }
+
+        // تحميل الألقاب من Firebase
+        database.ref('titles').on('value', (snapshot) => {
+            const titlesList = document.getElementById('titlesList');
+            titlesList.innerHTML = ''; // تنظيف القائمة قبل إعادة التحديث
+            let counter = 1;
+            snapshot.forEach((childSnapshot) => {
+                const title = childSnapshot.val().title;
+                const li = document.createElement('li');
+                li.textContent = `${counter}. ${title}`;
+                titlesList.appendChild(li);
+                counter++;
+            });
+        });
+
+        // تحميل نجوم الأسبوع من Firebase
+        database.ref('stars').on('value', (snapshot) => {
+            const starsList = document.getElementById('starsList');
+            starsList.innerHTML = ''; // تنظيف القائمة قبل إعادة التحديث
+            let counter = 1;
+            snapshot.forEach((childSnapshot) => {
+                const star = childSnapshot.val().star;
+                const li = document.createElement('li');
+                li.textContent = `${counter}. ${star}`;
+                starsList.appendChild(li);
+                counter++;
+            });
+        });
+    </script>
+
+    <!-- روابط CDN لـ Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
