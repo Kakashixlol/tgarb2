@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منظمة محبي الأنمي</title>
     <!-- ربط Bootstrap عبر CDN -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- ربط Font Awesome للأيقونات -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        /* تحسين تصميم الموقع بالكامل */
         body {
             background-color: #1a1a1a;
             color: white;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding-bottom: 60px; /* مساحة كافية لشريط الحقوق */
+            padding-bottom: 60px;
         }
         .navbar, .footer {
             background-color: #111;
@@ -21,11 +22,11 @@
         .card {
             background-color: #252525;
             border: 1px solid #333;
-            transition: transform 0.3s ease, background-color 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .card:hover {
-            transform: translateY(-10px);
-            background-color: #333;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
         .card-title, .footer {
             color: #f8f9fa;
@@ -42,6 +43,17 @@
             background-position: center;
             color: #ffffff;
             padding: 60px 0;
+            position: relative;
+        }
+        .background-1::before, .background-2::before, .background-3::before, 
+        .background-4::before, .background-5::before, .background-6::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
         }
         .background-1 { background-image: url('https://images8.alphacoders.com/430/430276.jpg'); }
         .background-2 { background-image: url('https://images7.alphacoders.com/422/422664.jpg'); }
@@ -53,46 +65,69 @@
             background-color: #007bff;
             color: #fff;
             border: none;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
         }
         .btn-custom:hover {
             background-color: #0056b3;
-        }
-        .list-numbered li::before {
-            content: counters(item, ".") ". ";
-            counter-increment: item;
-            color: #f39c12;
+            transform: scale(1.05);
         }
         .list-numbered {
             counter-reset: item;
             padding-left: 0;
             list-style: none;
         }
+        .list-numbered li {
+            counter-increment: item;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 30px;
+        }
+        .list-numbered li::before {
+            content: counter(item);
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .section-content {
+            position: relative;
+            z-index: 1;
+        }
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+        }
     </style>
-    <!-- ربط Firebase عبر CDN -->
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
 </head>
 <body>
     <!-- شريط التنقل -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="#">منظمة محبي الأنمي</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="#welcome">الترحيب</a></li>
-                <li class="nav-item"><a class="nav-link" href="#rules">القوانين والمميزات</a></li>
-                <li class="nav-item"><a class="nav-link" href="#admins">المشرفين</a></li>
-                <li class="nav-item"><a class="nav-link" href="#titles">الألقاب</a></li>
-                <li class="nav-item"><a class="nav-link" href="#stars">نجوم الأسبوع</a></li>
-                <li class="nav-item"><a class="nav-link" href="#links">روابط المجموعة</a></li>
-            </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-tv me-2"></i>منظمة محبي الأنمي</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#welcome"><i class="fas fa-home me-1"></i>الترحيب</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#rules"><i class="fas fa-scroll me-1"></i>القوانين والمميزات</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#admins"><i class="fas fa-users-cog me-1"></i>المشرفين</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#titles"><i class="fas fa-award me-1"></i>الألقاب</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#stars"><i class="fas fa-star me-1"></i>نجوم الأسبوع</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#links"><i class="fas fa-link me-1"></i>روابط المجموعة</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
-
+    
     <!-- صفحة الترحيب -->
     <section id="welcome" class="container-fluid background-1 text-center">
         <div class="container">
